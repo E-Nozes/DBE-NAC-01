@@ -2,7 +2,6 @@ package br.com.fiap.nac01.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
@@ -24,8 +23,9 @@ public class Jogo {
     @Column(length = 80, nullable = false)
     private String desenvolvedora;
 
+    @Size(max = 4)
     @NotEmpty
-    @Column(nullable = false)
+    @Column(length = 4, nullable = false)
     private String anoLancamento;
 
     public Integer getCodigo() {
