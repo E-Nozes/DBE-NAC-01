@@ -32,7 +32,7 @@ public class JogoService {
     }
 
     public Jogo create(Jogo jogo) throws InvalidDataException {
-        if (this.jogoRepository.findByDescricaoContainsIgnoreCase(jogo.getDescricao()).isPresent()) {
+        if (this.jogoRepository.findByDescricao(jogo.getDescricao()).isPresent()) {
             throw new InvalidDataException("Jogo já está cadastrado");
         }
 
@@ -42,7 +42,7 @@ public class JogoService {
     public Jogo update(Integer codigo, Jogo jogo) throws ResourceNotFoundException, InvalidDataException {
         Jogo jogoCadastrado = this.jogoRepository.findById(codigo).orElseThrow(ResourceNotFoundException::new);
 
-        if (this.jogoRepository.findByDescricaoContainsIgnoreCase(jogo.getDescricao()).isPresent()
+        if (this.jogoRepository.findByDescricao(jogo.getDescricao()).isPresent()
                 && !jogo.getDescricao().equals(jogoCadastrado.getDescricao())) {
             throw new InvalidDataException("Jogo já está cadastrado");
         }

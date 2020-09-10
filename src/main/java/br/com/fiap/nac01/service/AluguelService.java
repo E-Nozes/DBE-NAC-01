@@ -41,10 +41,7 @@ public class AluguelService {
     }
 
     public Aluguel create(Aluguel aluguel) throws InvalidDataException {
-        if (!this.clienteRepository.findById(aluguel.getCliente().getCodigo()).isPresent()
-                || !this.jogoRepository.findById(aluguel.getJogo().getCodigo()).isPresent()) {
-            throw new InvalidDataException("Cliente/Jogo informado não existe");
-        }
+        this.verificarSeClienteJogoExistem(aluguel);
 
         if (aluguel.getDataAluguel().isAfter(LocalDate.now())
                 || aluguel.getDataDevolucao().isBefore(LocalDate.now())
@@ -58,10 +55,7 @@ public class AluguelService {
     public Aluguel update(Integer codigo, Aluguel aluguel) throws ResourceNotFoundException, InvalidDataException {
         this.aluguelRepository.findById(codigo).orElseThrow(ResourceNotFoundException::new);
 
-        if (!this.clienteRepository.findById(aluguel.getCliente().getCodigo()).isPresent()
-                || !this.jogoRepository.findById(aluguel.getJogo().getCodigo()).isPresent()) {
-            throw new InvalidDataException("Cliente/Jogo informado não existe");
-        }
+        this.verificarSeClienteJogoExistem(aluguel);
 
         if (aluguel.getDataAluguel().isAfter(LocalDate.now())) {
             throw new InvalidDataException("Data inválida");
@@ -77,6 +71,13 @@ public class AluguelService {
 
     private Aluguel verificarSeExiste(Integer codigo) throws ResourceNotFoundException {
         return this.aluguelRepository.findById(codigo).orElseThrow(ResourceNotFoundException::new);
+    }
+
+    private void verificarSeClienteJogoExistem(Aluguel aluguel) throws InvalidDataException {
+        if (!this.clienteRepository.findById(aluguel.getCliente().getCodigo()).isPresent()
+                || !this.jogoRepository.findById(aluguel.getJogo().getCodigo()).isPresent()) {
+            throw new InvalidDataException("Cliente/Jogo informado não existe");
+        }
     }
 
 }

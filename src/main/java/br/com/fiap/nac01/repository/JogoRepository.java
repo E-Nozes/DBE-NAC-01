@@ -10,6 +10,8 @@ public interface JogoRepository extends JpaRepository<Jogo, Integer> {
 
     Optional<Jogo> findByDescricaoContainsIgnoreCase(final String descricao);
 
+    Optional<Jogo> findByDescricao(final String descricao);
+
     List<Jogo> findByAnoLancamento(final String anoLancamento);
 
 }
