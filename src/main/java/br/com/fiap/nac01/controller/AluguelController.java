@@ -19,11 +19,20 @@ public class AluguelController {
     @Autowired
     private AluguelService aluguelService;
 
+    /**
+     * http://localhost:8080/alugueis
+     * @return
+     */
     @GetMapping
     public ResponseEntity<List<Aluguel>> findAll() {
         return new ResponseEntity<>(this.aluguelService.findAll(), HttpStatus.OK);
     }
 
+    /**
+     * http://localhost:8080/alugueis/{codigo}
+     * @param codigo
+     * @return
+     */
     @GetMapping("{codigo}")
     public ResponseEntity<Aluguel> findByCodigo(@PathVariable("codigo") final Integer codigo) {
         try {
@@ -33,16 +42,32 @@ public class AluguelController {
         }
     }
 
+    /**
+     * http://localhost:8080/alugueis/cliente/{codigoCliente}
+     * @param codigo
+     * @return
+     */
     @GetMapping("cliente/{codigo}")
     public ResponseEntity<List<Aluguel>> findAllByClienteCodigo(@PathVariable("codigo") final Integer codigo) {
         return new ResponseEntity<>(this.aluguelService.findAllByClienteCodigo(codigo), HttpStatus.OK);
     }
 
+    /**
+     * http://localhost:8080/alugueis/preco/{preco}/cliente/{codigoCliente}
+     * @param preco
+     * @param codigo
+     * @return
+     */
     @GetMapping("preco/{preco}/cliente/{codigo}")
     public ResponseEntity<List<Aluguel>> findAllByPrecoAndClienteCodigo(@PathVariable("preco") final Double preco, @PathVariable("codigo") final Integer codigo) {
         return new ResponseEntity<>(this.aluguelService.findAllByPrecoAndClienteCodigo(preco, codigo), HttpStatus.OK);
     }
 
+    /**
+     * http://localhost:8080/alugueis
+     * @param aluguel
+     * @return
+     */
     @PostMapping
     public ResponseEntity<Aluguel> create(@RequestBody @Valid final Aluguel aluguel) {
         try {
@@ -52,6 +77,12 @@ public class AluguelController {
         }
     }
 
+    /**
+     * http://localhost:8080/alugueis/{codigo}
+     * @param codigo
+     * @param aluguel
+     * @return
+     */
     @PutMapping("{codigo}")
     public ResponseEntity<Aluguel> update(@PathVariable("codigo") final Integer codigo, @RequestBody @Valid final Aluguel aluguel) {
         try {
@@ -63,6 +94,11 @@ public class AluguelController {
         }
     }
 
+    /**
+     * http://localhost:8080/alugueis/{codigo}
+     * @param codigo
+     * @return
+     */
     @DeleteMapping("{codigo}")
     public ResponseEntity delete(@PathVariable("codigo") final Integer codigo) {
         try {

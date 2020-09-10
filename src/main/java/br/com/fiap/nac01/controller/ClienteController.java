@@ -19,11 +19,20 @@ public class ClienteController {
     @Autowired
     private ClienteService clienteService;
 
+    /**
+     * http://localhost:8080/clientes
+     * @return
+     */
     @GetMapping
     public ResponseEntity<List<Cliente>> findAll() {
         return new ResponseEntity<>(this.clienteService.findAll(), HttpStatus.OK);
     }
 
+    /**
+     * http://localhost:8080/clientes/{codigo}
+     * @param codigo
+     * @return
+     */
     @GetMapping("{codigo}")
     public ResponseEntity<Cliente> findByCodigo(@PathVariable("codigo") final Integer codigo) {
         try {
@@ -33,6 +42,11 @@ public class ClienteController {
         }
     }
 
+    /**
+     * http://localhost:8080/clientes/email/{email}
+     * @param email
+     * @return
+     */
     @GetMapping("email/{email}")
     public ResponseEntity<Cliente> findByEmail(@PathVariable("email") final String email) {
         try {
@@ -42,6 +56,11 @@ public class ClienteController {
         }
     }
 
+    /**
+     * http://localhost:8080/clientes
+     * @param cliente
+     * @return
+     */
     @PostMapping
     public ResponseEntity<Cliente> create(@RequestBody @Valid final Cliente cliente) {
         try {
@@ -51,6 +70,12 @@ public class ClienteController {
         }
     }
 
+    /**
+     * http://localhost:8080/clientes/{codigo}
+     * @param codigo
+     * @param cliente
+     * @return
+     */
     @PutMapping("{codigo}")
     public ResponseEntity<Cliente> update(@PathVariable("codigo") final Integer codigo, @RequestBody @Valid final Cliente cliente) {
         try {
@@ -62,6 +87,11 @@ public class ClienteController {
         }
     }
 
+    /**
+     * http://localhost:8080/clientes/{codigo}
+     * @param codigo
+     * @return
+     */
     @DeleteMapping("{codigo}")
     public ResponseEntity delete(@PathVariable("codigo") final Integer codigo) {
         try {

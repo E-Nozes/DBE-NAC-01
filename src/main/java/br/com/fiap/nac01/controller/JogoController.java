@@ -19,11 +19,20 @@ public class JogoController {
     @Autowired
     private JogoService jogoService;
 
+    /**
+     * http://localhost:8080/jogos
+     * @return
+     */
     @GetMapping
     public ResponseEntity<List<Jogo>> findAll() {
         return new ResponseEntity<>(this.jogoService.findAll(), HttpStatus.OK);
     }
 
+    /**
+     * http://localhost:8080/jogos/{codigo}
+     * @param codigo
+     * @return
+     */
     @GetMapping("{codigo}")
     public ResponseEntity<Jogo> findByCodigo(@PathVariable("codigo") final Integer codigo) {
         try {
@@ -33,6 +42,11 @@ public class JogoController {
         }
     }
 
+    /**
+     * http://localhost:8080/jogos/descricao/{descricao}
+     * @param descricao
+     * @return
+     */
     @GetMapping("descricao/{descricao}")
     public ResponseEntity<Jogo> findByDescricao(@PathVariable("descricao") final String descricao) {
         try {
@@ -42,11 +56,21 @@ public class JogoController {
         }
     }
 
+    /**
+     * http://localhost:8080/jogos/anoLancamento/{anoLancamento}
+     * @param anoLancamento
+     * @return
+     */
     @GetMapping("anoLancamento/{anoLancamento}")
     public ResponseEntity<List<Jogo>> findByAnoLancamento(@PathVariable("anoLancamento") final String anoLancamento) {
         return new ResponseEntity<>(this.jogoService.findByAnoLancamento(anoLancamento), HttpStatus.OK);
     }
 
+    /**
+     * http://localhost:8080/jogos
+     * @param jogo
+     * @return
+     */
     @PostMapping
     public ResponseEntity<Jogo> create(@RequestBody @Valid final Jogo jogo) {
         try {
@@ -56,6 +80,12 @@ public class JogoController {
         }
     }
 
+    /**
+     * http://localhost:8080/jogos/{codigo}
+     * @param codigo
+     * @param jogo
+     * @return
+     */
     @PutMapping("{codigo}")
     public ResponseEntity<Jogo> update(@PathVariable("codigo") final Integer codigo, @RequestBody @Valid final Jogo jogo) {
         try {
@@ -67,6 +97,11 @@ public class JogoController {
         }
     }
 
+    /**
+     * http://localhost:8080/jogos/{codigo}
+     * @param codigo
+     * @return
+     */
     @DeleteMapping("{codigo}")
     public ResponseEntity delete(@PathVariable("codigo") final Integer codigo) {
         try {
