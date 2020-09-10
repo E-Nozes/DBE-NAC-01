@@ -1,12 +1,9 @@
 package br.com.fiap.nac01.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
@@ -27,16 +24,15 @@ public class Jogo {
     @Column(length = 80, nullable = false)
     private String desenvolvedora;
 
-    @NotNull
+    @NotEmpty
     @Column(nullable = false)
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDate anoLancamento;
+    private String anoLancamento;
 
-    public int getCodigo() {
+    public Integer getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(Integer codigo) {
         this.codigo = codigo;
     }
 
@@ -56,11 +52,11 @@ public class Jogo {
         this.desenvolvedora = desenvolvedora;
     }
 
-    public LocalDate getAnoLancamento() {
+    public String getAnoLancamento() {
         return anoLancamento;
     }
 
-    public void setAnoLancamento(LocalDate anoLancamento) {
+    public void setAnoLancamento(String anoLancamento) {
         this.anoLancamento = anoLancamento;
     }
 
