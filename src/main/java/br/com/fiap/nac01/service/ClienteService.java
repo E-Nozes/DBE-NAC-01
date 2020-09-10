@@ -6,7 +6,6 @@ import br.com.fiap.nac01.model.Cliente;
 import br.com.fiap.nac01.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 

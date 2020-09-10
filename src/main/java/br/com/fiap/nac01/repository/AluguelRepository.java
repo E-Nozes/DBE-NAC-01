@@ -10,6 +10,6 @@ public interface AluguelRepository extends JpaRepository<Aluguel, Integer> {
 
     List<Aluguel> findAllByCliente_Codigo(final Integer codigoCliente);
 
-    List<Aluguel> findAllByDataDevolucaoAndCliente_Codigo(final LocalDate dataDevolucao, final Integer codigoCliente);
+    List<Aluguel> findAllByPrecoAndCliente_Codigo(final Double preco, final Integer codigoCliente);
 
 }
