@@ -22,11 +22,13 @@ public class Aluguel {
     private LocalDate dataDevolucao;
 
     @NotNull
-    @Column(nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "cliente_id", nullable = false)
     private Cliente cliente;
 
     @NotNull
-    @Column(nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "jogo_id", nullable = false)
     private Jogo jogo;
 
     @NotNull

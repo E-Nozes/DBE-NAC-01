@@ -31,9 +31,6 @@ public class Jogo {
     @Column(nullable = false)
     private LocalDate anoLancamento;
 
-    @NotNull
-    private List<String> plataformas = new ArrayList<>();
-
     public int getCodigo() {
         return codigo;
     }
@@ -66,14 +63,6 @@ public class Jogo {
         this.anoLancamento = anoLancamento;
     }
 
-    public List<String> getPlataformas() {
-        return plataformas;
-    }
-
-    public void setPlataformas(List<String> plataformas) {
-        this.plataformas = plataformas;
-    }
-
     @Override
     public String toString() {
         return "Jogo{" +
@@ -81,7 +70,6 @@ public class Jogo {
                 ", descricao='" + descricao + '\'' +
                 ", desenvolvedora='" + desenvolvedora + '\'' +
                 ", anoLancamento=" + anoLancamento +
-                ", plataformas=" + plataformas +
                 '}';
     }
 
