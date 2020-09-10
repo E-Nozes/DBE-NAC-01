@@ -1,5 +1,7 @@
 package br.com.fiap.nac01.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
@@ -11,14 +13,16 @@ public class Aluguel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "aluguel")
-    private int codigo;
+    private Integer codigo;
 
     @NotNull
     @Column(nullable = false)
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataAluguel;
 
     @NotNull
     @Column(nullable = false)
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataDevolucao;
 
     @NotNull

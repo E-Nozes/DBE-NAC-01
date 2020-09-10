@@ -1,5 +1,7 @@
 package br.com.fiap.nac01.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -13,26 +15,27 @@ public class Cliente {
 
     @Id
     @GeneratedValue(generator = "cliente", strategy = GenerationType.SEQUENCE)
-    private int codigo;
+    private Integer codigo;
 
     @Size(max = 60)
     @NotEmpty
     @Column(length = 60, nullable = false)
     private String nome;
 
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataNascimento;
 
     @Email
     @NotEmpty
     @Size(max = 120)
-    @Column(length = 120, nullable = false)
+    @Column(length = 120, nullable = false, unique = true)
     private String email;
 
-    public int getCodigo() {
+    public Integer getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(Integer codigo) {
         this.codigo = codigo;
     }
 

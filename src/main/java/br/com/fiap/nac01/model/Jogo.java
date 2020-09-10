@@ -1,12 +1,12 @@
 package br.com.fiap.nac01.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -15,7 +15,7 @@ public class Jogo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "jogo")
-    private int codigo;
+    private Integer codigo;
 
     @Size(max = 120)
     @NotEmpty
@@ -29,6 +29,7 @@ public class Jogo {
 
     @NotNull
     @Column(nullable = false)
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate anoLancamento;
 
     public int getCodigo() {
