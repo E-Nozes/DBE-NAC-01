@@ -11,4 +11,3 @@ Crie uma API com Spring Boot com todas as funcionalidades básicas (CRUD) e pelo
 3. Leonardo Rodrigues Selmes - RM81984
 4. Raí Gonçalves Miyashiro - RM81933
 5. Gustavo Alves Zotarelli - RM83903
-6. Lucas Andrade Navarro de Oliveira - RM85633
